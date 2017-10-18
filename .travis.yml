@@ -2,7 +2,7 @@ dist: trusty
 sudo: required
 language: java
 before_script:
- - sudo add-apt-repository ppa:git-core/ppa
+ - sudo add-apt-repository -y ppa:git-core/ppa
  - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
  - sudo apt-get update
  - sudo apt-get -y install git
