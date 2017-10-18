@@ -15,12 +15,14 @@ before_script:
  - wiki &
  - wget https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz
  - tar zxvf ZAP_2.5.0_Linux.tar.gz
- - ./ZAP_2.5.0_Linux/zap.sh -config api.key=12345 -port 8090 -daemon &
+ - ls > t.txt
+ - cat t.txt
+ #- ./ZAP_2.5.0_Linux/zap.sh -config api.key=12345 -port 8090 -daemon &
 script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
- - zap-cli -p 8090 --api-key 12345 spider http://$IPADDR:3000
- - zap-cli -p 8090 --api-key 12345 active-scan http://$IPADDR:3000
- - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
- - cat ./report.html
+ #- zap-cli -p 8090 --api-key 12345 spider http://$IPADDR:3000
+ #- zap-cli -p 8090 --api-key 12345 active-scan http://$IPADDR:3000
+ #- sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
+ #- cat ./report.html
 
  
