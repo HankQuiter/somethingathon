@@ -10,7 +10,7 @@ before_script:
  - sudo apt-get -y install nodejs
  - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
  - npm install -g wiki
- - wiki
+ - wiki &
  - wget https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz
  - tar zxvf ZAP_2.5.0_Linux.tar.gz
  - ./ZAP_2.5.0_Linux/zap.sh -config api.key=12345 -port 8090 -daemon &
