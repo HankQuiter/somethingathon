@@ -1,6 +1,8 @@
 dist: trusty
 sudo: required
 language: java
+env:
+ - IPADDR = /sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
 before_script:
  - sudo add-apt-repository -y ppa:git-core/ppa
  - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -15,7 +17,7 @@ before_script:
  - tar zxvf ZAP_2.5.0_Linux.tar.gz
  - ./ZAP_2.5.0_Linux/zap.sh -config api.key=12345 -port 8090 -daemon &
 script:
- - export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
+ #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
  - zap-cli -p 8090 --api-key 12345 spider http://$IPADDR:3000
  - zap-cli -p 8090 --api-key 12345 active-scan http://$IPADDR:3000
  - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
