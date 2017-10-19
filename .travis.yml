@@ -10,6 +10,7 @@ before_script:
  - sudo apt-get -y install git
  - sudo apt-get -y install python-pip
  - sudo apt-get -y install nodejs
+ - sudo apt-get -y install lynx
  - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
  - npm install -g wiki
  - wiki &
@@ -22,6 +23,6 @@ script:
  - zap-cli -p 8090 --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090 --api-key 12345 active-scan http://localhost:3000
  - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
- - cat ./report.html
+ - lynx ./report.html
 
  
