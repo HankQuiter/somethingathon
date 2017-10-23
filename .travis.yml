@@ -23,6 +23,7 @@ script:
  - zap-cli -p 8090 --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090 --api-key 12345 active-scan http://localhost:3000
  - sudo zap-cli -p 8090 --api-key 12345 report -f xml -o ./report.xml
- - lynx ./report.xml -dump
+ #- lynx ./report.xml -dump
+ - cat ./report.xml
 
  
