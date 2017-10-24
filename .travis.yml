@@ -7,6 +7,7 @@ before_script:
  - sudo add-apt-repository -y ppa:git-core/ppa
  - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
  - sudo apt-get update
+ - sudo apt-get install xqilla
  - sudo apt-get -y install git
  - sudo apt-get -y install python-pip
  - sudo apt-get -y install nodejs
@@ -22,8 +23,9 @@ script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
  - zap-cli -p 8090 --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090 --api-key 12345 active-scan http://localhost:3000
- - sudo zap-cli -p 8090 --api-key 12345 report -f xml -o ./report.xml
- #- lynx ./report.xml -dump
- - cat ./report.xml
+ - sudo zap-cli -p 8090 --api-key 12345 report -f xml -o ./report.html
+ #- lynx ./report.html -dump
+ #- cat ./report.xml
+ - cat ./report.html 
 
  
