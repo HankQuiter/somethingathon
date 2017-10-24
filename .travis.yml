@@ -23,7 +23,7 @@ script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
  - zap-cli -p 8090 --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090 --api-key 12345 active-scan http://localhost:3000
- - sudo zap-cli -p 8090 --api-key 12345 report -f xml -o ./report.html
+ - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
  #- lynx ./report.html -dump
  #- cat ./report.xml
  - cat ./report.html 
