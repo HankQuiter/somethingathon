@@ -15,17 +15,20 @@ before_script:
  - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
  - npm install -g wiki
  - wiki &
- - wget https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz
- - tar zxvf ZAP_2.5.0_Linux.tar.gz
- - ./ZAP_2.5.0/zap.sh -config api.key=12345 -port 8090 -daemon &
+ # wget https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz
+ - wget https://github.com/zaproxy/zaproxy/releases/download/w2018-05-14/ZAP_WEEKLY_D-2018-05-14.zip
+ #- tar zxvf ZAP_2.5.0_Linux.tar.gz
+ - tar xvf ZAP_WEEKLY_D-2018-05-14.zip
+ - ./ZAP_WEEKLY_D-2018-05-14/zap.sh -config api.key=12345 -port 8090 -daemon &
+ #- ./ZAP_2.5.0/zap.sh -config api.key=12345 -port 8090 -daemon &
  - sleep 30
 script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
  - zap-cli -p 8090 --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090 --api-key 12345 active-scan http://localhost:3000
  - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
- #- lynx ./report.html -dump
+ - lynx ./report.html -dump
  #- cat ./report.xml
- - cat ./report.html 
+ #- cat ./report.html 
 
  
