@@ -19,13 +19,14 @@ before_script:
  #- tar zxvf ZAP_2.5.0_Linux.tar.gz
  #- ./ZAP_2.5.0/zap.sh -config api.key=12345 -port 8090 -daemon &
  
- - wget https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2.7.0_Linux.tar.gz
- - tar zxvf ZAP_2.7.0_Linux.tar.gz
- - ./ZAP_2.7.0/zap.sh -config api.key=12345 -port 8090 -daemon &
+ #- wget https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2.7.0_Linux.tar.gz
+ #- tar zxvf ZAP_2.7.0_Linux.tar.gz
+ #- ./ZAP_2.7.0/zap.sh -config api.key=12345 -port 8090 -daemon &
  
- #- wget https://github.com/zaproxy/zaproxy/releases/download/w2018-05-14/ZAP_WEEKLY_D-2018-05-14.zip
- #- unzip ZAP_WEEKLY_D-2018-05-14.zip
- #- ./ZAP_WEEKLY_D-2018-05-14/zap.sh -config api.key=12345 -port 8090 -daemon &
+ - wget https://github.com/zaproxy/zaproxy/releases/download/w2018-05-14/ZAP_WEEKLY_D-2018-05-14.zip
+ - unzip ZAP_WEEKLY_D-2018-05-14.zip
+ - ./ZAP_WEEKLY_D-2018-05-14/zap.sh -config api.key=12345 -port 8090 -daemon &
+ - sleep 45
  - sleep 30
 script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
