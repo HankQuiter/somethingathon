@@ -17,7 +17,7 @@ before_script:
 # - npm install -g wiki
 # - wiki &
  - curl ipinfo.io/ip > ip.txt
- - export $ADDR = $(cat ip.txt)
+ - export ADDR=$(cat ip.txt)
  - echo $ADDR
  - cat ip.txt
  ## this gets and starts the latest official release
