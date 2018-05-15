@@ -26,20 +26,20 @@ before_script:
  ## This is gets and starts a weekly rolling release of ZAP
  ##TODO encrypt an official api key
  ##TODO verify SHA1 hash of zap download
-# - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
-# - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
-# - wget $ZAP
-# - unzip ZAP_WEEKLY*.zip
-# - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -daemon &
+ - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
+ - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
+ - wget $ZAP
+ - unzip ZAP_WEEKLY*.zip
+ - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -daemon &
  
  
  - sleep 30
 script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
-# - zap-cli -p 8090 --api-key 12345 spider http://localhost:3000
-# - zap-cli -p 8090 --api-key 12345 active-scan http://localhost:3000
-# - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
-# - lynx ./report.html -dump
+ - zap-cli -p 8090 --api-key 12345 spider http://$ADDR:3000
+ - zap-cli -p 8090 --api-key 12345 active-scan http://$ADDR:3000
+ - sudo zap-cli -p 8090 --api-key 12345 report -f html -o ./report.html
+ - lynx ./report.html -dump
  #- cat ./report.xml
  #- cat ./report.html 
 
