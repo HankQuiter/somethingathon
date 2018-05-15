@@ -25,8 +25,11 @@ before_script:
  ##TODO encrypt an official api key
  ##TODO verify SHA1 hash of zap download
  - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
- - export SHA1=$(xmllint --xpath "string(//hash)" ZapVersions.xml)
- - echo $SHA1
+ - export SHA1_FROM_XML=$(xmllint --xpath "string(//hash)" ZapVersions.xml)
+ - echo $SHA1_FROM_XML
+ - export SHA1_OF_FILE=$(sha1sum ZAP_WEEKLY_D*.zip)
+ - test ${SHA1_FROM_XML:5} = ${SHA1_OF_FILE:0:40}
+ - test ${SHA1_FROM_XML:6} = ${SHA1_OF_FILE:0:40}
  - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
  - wget $ZAP
  - unzip ZAP_WEEKLY*.zip
