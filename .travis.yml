@@ -4,18 +4,18 @@ language: java
 #env:
 # - IPADDR = /sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
 before_script:
-# - sudo add-apt-repository -y ppa:git-core/ppa
-# - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-# - sudo apt-get update
-# - sudo apt-get install xqilla
-# - sudo apt-get -y install git
-# - sudo apt-get -y install python-pip
-# - sudo apt-get -y install nodejs
-# - sudo apt-get -y install lynx
-# - sudo apt-get -y install libxml2-utils
-# - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
-# - npm install -g wiki
-# - wiki &
+ - sudo add-apt-repository -y ppa:git-core/ppa
+ - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+ - sudo apt-get update
+ - sudo apt-get install xqilla
+ - sudo apt-get -y install git
+ - sudo apt-get -y install python-pip
+ - sudo apt-get -y install nodejs
+ - sudo apt-get -y install lynx
+ - sudo apt-get -y install libxml2-utils
+ - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
+ - npm install -g wiki
+ - wiki &
  - export ADDR=$(curl ipinfo.io/ip)
  - echo $ADDR
  ## this gets and starts the latest official release
