@@ -23,17 +23,14 @@ before_script:
  
  ## This is gets and starts a weekly rolling release of ZAP
  ##TODO encrypt an official api key
- ##TODO verify SHA1 hash of zap download
  - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
  - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
  - wget $ZAP 
  - export SHA1_FROM_XML=$(xmllint --xpath "string(//hash)" ZapVersions.xml)
- - echo $SHA1_FROM_XML
  - export SHA1_OF_FILE=$(sha1sum ZAP_WEEKLY_D*.zip)
  - test ${SHA1_FROM_XML:5} = ${SHA1_OF_FILE:0:40}
- - test ${SHA1_FROM_XML:6} = ${SHA1_OF_FILE:0:40}
- - unzip ZAP_WEEKLY*.zip
- - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -host 0.0.0.0 -daemon &
+ - unzip ZAP_WEEKLY_D*.zip
+ - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -daemon &
  
  
  - sleep 30
