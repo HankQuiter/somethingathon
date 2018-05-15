@@ -29,7 +29,7 @@ before_script:
  - wget $ZAP 
  - export SHA1_FROM_XML=$(xmllint --xpath "string(//hash)" ZapVersions.xml)
  - echo $SHA1_FROM_XML
- - export SHA1_OF_FILE=$(sha1sum $ZAP)
+ - export SHA1_OF_FILE=$(sha1sum ZAP_WEEKLY_D*.zip)
  - test ${SHA1_FROM_XML:5} = ${SHA1_OF_FILE:0:40}
  - test ${SHA1_FROM_XML:6} = ${SHA1_OF_FILE:0:40}
  - unzip ZAP_WEEKLY*.zip
