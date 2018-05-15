@@ -30,7 +30,7 @@ before_script:
  - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
  - wget $ZAP
  - unzip ZAP_WEEKLY*.zip
- - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -daemon &
+ - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -host 0.0.0.0 -daemon &
  
  
  - sleep 30
