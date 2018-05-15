@@ -4,20 +4,22 @@ language: java
 #env:
 # - IPADDR = /sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
 before_script:
- - sudo add-apt-repository -y ppa:git-core/ppa
- - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
- - sudo apt-get update
- - sudo apt-get install xqilla
- - sudo apt-get -y install git
- - sudo apt-get -y install python-pip
- - sudo apt-get -y install nodejs
- - sudo apt-get -y install lynx
- - sudo apt-get -y install libxml2-utils
- - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
- - npm install -g wiki
- - wiki &
- - export IPADDRESS = $(curl ipinfo.io/ip)
+# - sudo add-apt-repository -y ppa:git-core/ppa
+# - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+# - sudo apt-get update
+# - sudo apt-get install xqilla
+# - sudo apt-get -y install git
+# - sudo apt-get -y install python-pip
+# - sudo apt-get -y install nodejs
+# - sudo apt-get -y install lynx
+# - sudo apt-get -y install libxml2-utils
+# - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
+# - npm install -g wiki
+# - wiki &
+ - curl ipinfo.io/ip > ip.txt
+ - export IPADDRESS = $(curl "ipinfo.io/ip")
  - echo $IPADDRESS
+ - cat ip.txt
  ## this gets and starts the latest official release
  #- wget https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2.7.0_Linux.tar.gz
  #- tar zxvf ZAP_2.7.0_Linux.tar.gz
