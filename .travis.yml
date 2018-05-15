@@ -26,7 +26,7 @@ before_script:
  - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
  - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
  - wget $ZAP
- - wget https://github.com/zaproxy/zaproxy/releases/download/w2018-05-14/ZAP_WEEKLY_D-2018-05-14.zip
+ #- wget https://github.com/zaproxy/zaproxy/releases/download/w2018-05-14/ZAP_WEEKLY_D-2018-05-14.zip
  - unzip ZAP_WEEKLY*.zip
  - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -daemon &
  - sleep 30
