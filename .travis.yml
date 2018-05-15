@@ -16,10 +16,8 @@ before_script:
 # - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
 # - npm install -g wiki
 # - wiki &
- - curl ipinfo.io/ip > ip.txt
- - export ADDR=$(cat ip.txt)
+ - export ADDR=$(curl ipinfo.io/ip)
  - echo $ADDR
- - cat ip.txt
  ## this gets and starts the latest official release
  #- wget https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2.7.0_Linux.tar.gz
  #- tar zxvf ZAP_2.7.0_Linux.tar.gz
