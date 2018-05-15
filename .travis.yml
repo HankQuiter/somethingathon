@@ -16,8 +16,6 @@ before_script:
  - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
  - npm install -g wiki
  - wiki &
- - export ADDR=$(curl ipinfo.io/ip)
- - echo $ADDR
  ## this gets and starts the latest official release
  #- wget https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2.7.0_Linux.tar.gz
  #- tar zxvf ZAP_2.7.0_Linux.tar.gz
@@ -27,10 +25,12 @@ before_script:
  ##TODO encrypt an official api key
  ##TODO verify SHA1 hash of zap download
  - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
+ - export SHA1=$(xmllint --xpath "string(//hash)" ZapVersions.xml)
+ - echo $SHA1
  - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
  - wget $ZAP
  - unzip ZAP_WEEKLY*.zip
- - sudo ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -host 0.0.0.0 -daemon &
+ - ./ZAP_D*/zap.sh -config api.key=12345 -port 8090 -host 0.0.0.0 -daemon &
  
  
  - sleep 30
