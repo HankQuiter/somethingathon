@@ -12,6 +12,7 @@ before_script:
  - sudo apt-get -y install python-pip
  - sudo apt-get -y install nodejs
  - sudo apt-get -y install lynx
+ - sudo apt-get -y install libxml2-utils
  - sudo pip install --upgrade git+https://github.com/Grunny/zap-cli.git
  - npm install -g wiki
  - wiki &
