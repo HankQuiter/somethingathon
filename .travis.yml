@@ -1,8 +1,6 @@
 dist: trusty
 sudo: required
 language: java
-#env:
-# - IPADDR = /sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
 before_script:
  - sudo add-apt-repository -y ppa:git-core/ppa
  - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -14,7 +12,6 @@ before_script:
  - sudo apt-get -y install lynx
  - sudo apt-get -y install libxml2-utils
  - sudo pip install --upgrade git+https://github.com/HankQuiter/zap-cli.git
- #- sudo pip install grip #can be removed just for rendering MD in console
  - npm install -g wiki
  - wiki &
  ## this gets and starts the latest official release
@@ -24,6 +21,7 @@ before_script:
  
  ## This is gets and starts a weekly rolling release of ZAP
  ##TODO encrypt an official api key
+ ##TODO encrypt zap session in zip file and check in the encryption
  - wget https://raw.githubusercontent.com/zaproxy/zap-admin/master/ZapVersions.xml
  - export ZAP=$(xmllint --xpath "string(//url)" ZapVersions.xml) 
  - wget $ZAP 
@@ -45,15 +43,11 @@ script:
  #- zap-cli -p 8090 --api-key 12345 spider -c my_awesome_context -u user@somemail.com https://[the].[server].[name]/analyze/
  #- zap-cli -p 8090 --api-key 12345 active-scan --recursive -c my_awesome_context -u user@somemail.com https://[the].[server].[name]/analyze/
  
- #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
  - zap-cli -p 8090  --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090  --api-key 12345 active-scan http://localhost:3000
  - sudo zap-cli -p 8090  --api-key 12345 report -f md -o ./report.md
- #- lynx ./report.html -dump
- #- cat ./report.xml
- #- cat ./report.html
- #- grip ./report.md &
- #- lynx http://localhost:5000 -dump
+ #TODO remove old MD files from repo
+ #TODO add latest report (with date in the name) to back into git
  - cat ./report.md
  
 
