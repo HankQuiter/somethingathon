@@ -14,7 +14,7 @@ before_script:
  - sudo apt-get -y install lynx
  - sudo apt-get -y install libxml2-utils
  - sudo pip install --upgrade git+https://github.com/HankQuiter/zap-cli.git
- - sudo pip install grip #can be removed just for rendering MD in console
+ #- sudo pip install grip #can be removed just for rendering MD in console
  - npm install -g wiki
  - wiki &
  ## this gets and starts the latest official release
@@ -52,8 +52,9 @@ script:
  #- lynx ./report.html -dump
  #- cat ./report.xml
  #- cat ./report.html
- - grip ./report.md &
- - lynx http://localhost:5000 -dump
+ #- grip ./report.md &
+ #- lynx http://localhost:5000 -dump
+ - cat ./report.md
  
 
  
