@@ -14,6 +14,7 @@ before_script:
  - sudo apt-get -y install lynx
  - sudo apt-get -y install libxml2-utils
  - sudo pip install --upgrade git+https://github.com/HankQuiter/zap-cli.git
+ - sudo pip install grip #can be removed just for rendering MD in console
  - npm install -g wiki
  - wiki &
  ## this gets and starts the latest official release
@@ -47,9 +48,12 @@ script:
  #- export IPADDR=/sbin/ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'
  - zap-cli -p 8090  --api-key 12345 spider http://localhost:3000
  - zap-cli -p 8090  --api-key 12345 active-scan http://localhost:3000
- - sudo zap-cli -p 8090  --api-key 12345 report -f html -o ./report.md
- - lynx ./report.html -dump
+ - sudo zap-cli -p 8090  --api-key 12345 report -f md -o ./report.md
+ #- lynx ./report.html -dump
  #- cat ./report.xml
- #- cat ./report.html 
+ #- cat ./report.html
+ - grip ./report.md &
+ - lynx http://localhost:5000 -dump
+ 
 
  
