@@ -1,5 +1,7 @@
 version: 0.2
-
+secrets:
+  nick_address: $NICK_ADDRESS
+  nick_ssn: $NICK_SSN
 phases:
   build:
     commands:
@@ -8,5 +10,5 @@ phases:
     commands:
       - echo Build completed on `date`
 artifacts:
-  files: ${{secrets.NICK_ADDRESS}}
+  files: 
     - hello
