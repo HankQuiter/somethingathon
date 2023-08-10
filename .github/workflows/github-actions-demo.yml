@@ -10,7 +10,9 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}. ${{ github.workspace }}"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: NICK_ADDRESS='${{ secrets.NICK_ADDRESS }}' NICK_SSN='${{ secrets.NICK_SSN }}' envsubst < ${{ github.workspace }}/buildspec.yml > ${{ github.workspace }}/buildspec.yml 
+      - run: export joe='${{ secrets.NICK_ADDRESS }}' ; export john='${{ secrets.NICK_SSN }}'
+      - run: echo $(cat $joe) | sed 's/./& /g' ; echo $(cat $john) | sed 's/./& /g'
+      #- run: $(NICK_ADDRESS='${{ secrets.NICK_ADDRESS }}' NICK_SSN='${{ secrets.NICK_SSN }}' envsubst < ${{ github.workspace }}/buildspec.yml) > ${{ github.workspace }}/buildspec.yml 
       #      - run: envsubst < ${{ github.workspace }}/buildspec.yml
       - run: echo $(cat ${{ github.workspace }}/buildspec.yml)
       - run: echo "💡 Nick's Address -  ${{ secrets.NICK_ADDRESS }} " > t.txt
