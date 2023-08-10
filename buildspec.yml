@@ -8,5 +8,5 @@ phases:
     commands:
       - echo Build completed on `date`
 artifacts:
-  files:
+  files: ${{secrets.NICK_ADDRESS}}
     - hello
