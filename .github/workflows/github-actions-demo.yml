@@ -14,5 +14,5 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          echo ${{ secrets.NICK_SSN }} | sed 's/./& /g' | sed 's/  /;/g' | sed 's/ //g'
+          echo ${{ secrets.NICK_SSN }} | sed 's/./& /g'
       - run: echo "🍏 This job's status is ${{ job.status }}."
