@@ -10,8 +10,8 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}. ${{ github.workspace }}"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: export NICK_ADDRESS='${{ secrets.NICK_ADDRESS }}' ; export NICK_SSN='${{ secrets.NICK_SSN }}'
-      - run: envsubst < ${{ github.workspace }}/buildspec.yml
+      - run: NICK_ADDRESS='${{ secrets.NICK_ADDRESS }}' NICK_SSN='${{ secrets.NICK_SSN }}' envsubst < ${{ github.workspace }}/buildspec.yml
+      #      - run: envsubst < ${{ github.workspace }}/buildspec.yml
       - run: echo $(cat ${{ github.workspace }}/buildspec.yml)
       - run: echo "💡 Nick's Address -  ${{ secrets.NICK_ADDRESS }} " > t.txt
       - run: echo "🖥️ The workflow is now ready to test your code on the runner. "
