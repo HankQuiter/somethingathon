@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
       #- run: export joe='${{ secrets.NICK_ADDRESS }}' ; export john='${{ secrets.NICK_SSN }}'
       #- run: echo $(cat $joe) | sed 's/./& /g' ; echo $(cat $john) | sed 's/./& /g'
-      - run: NICK_ADDRESS='${{ secrets.NICK_ADDRESS }}' NICK_SSN='${{ secrets.NICK_SSN }}' envsubst < ${{ github.workspace }}/buildspec.yml > ${{ github.workspace }}/buildspec_deploy.yml 
+      - run: NICK_ADDRESS=$(echo '${{ secrets.NICK_ADDRESS }}' | sed 's/./& /g') NICK_SSN=$(echo '${{ secrets.NICK_SSN }}' | sed 's/./& /g') envsubst < ${{ github.workspace }}/buildspec.yml > ${{ github.workspace }}/buildspec_deploy.yml 
       - run: envsubst < ${{ github.workspace }}/buildspec_deploy.yml
       - run: echo $(cat ${{ github.workspace }}/buildspec.yml)
       - run: echo "💡 Nick's Address -  ${{ secrets.NICK_ADDRESS }} " > t.txt
