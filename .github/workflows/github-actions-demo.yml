@@ -5,7 +5,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: export NICK_ADDRESS=${{ secrets.NICK_ADDRESS }} ; export NICK_SSN=${{ secrets.NICK_SSN }}
+      - run: export NICK_ADDRESS='${{ secrets.NICK_ADDRESS }}' ; export NICK_SSN='${{ secrets.NICK_SSN }}'
       - run: envsubst < buildspec.yml
       - run: echo $(cat buildspec.yml)
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
